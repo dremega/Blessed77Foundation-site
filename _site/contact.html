@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us - Blessed 77 Foundation</title>
+<meta name="description" content="Get in touch with Blessed 77 Foundation. Reach out about volunteering, donating, or enrolling a young person.">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+
+<header class="nav" id="top">
+  <div class="nav-pill">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Blessed 77 Foundation" class="brand-logo">
+      <span class="brand-text">Blessed 77</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="programs.html">Programs</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a class="btn btn-gold btn-sm" href="get-involved.html#donate">Donate</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero hero-compact">
+  <div class="orb orb-a"></div>
+  <div class="wrap">
+    <div class="kicker reveal">Contact</div>
+    <h1 class="reveal r-delay-1" style="max-width: 12ch;"><em>Let's talk.</em></h1>
+    <p class="lead reveal r-delay-2">Whether you want to enroll a young person, volunteer, or support the work, send us a note and we will get right back to you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <div class="reveal r-left">
+      <div class="kicker">Reach us</div>
+      <h2>Contact information</h2>
+      <ul class="contact-list">
+        <li><span>Address</span>2108 N Street, Suite N, Sacramento, CA 95816</li>
+        <li><span>Phone</span><a href="tel:3412032555">(341) 203-2555</a></li>
+        <li><span>Email</span><a href="mailto:info@blessed77foundation.org">info@blessed77foundation.org</a></li>
+        <li><span>Hours</span>Mon to Fri: 3pm to 8pm, Sat: 10am to 6pm</li>
+      </ul>
+    </div>
+    <form class="form reveal r-right r-delay-1" action="https://formsubmit.co/info@dremega.com" method="POST">
+      <label>Name<input type="text" name="name" required placeholder="Your name"></label>
+      <label>Email<input type="email" name="email" required placeholder="you@email.com"></label>
+      <label>Phone<input type="tel" name="phone" placeholder="(optional)"></label>
+      <label>I'm reaching out about
+        <div class="select-wrap">
+          <select name="subject" required>
+            <option value="">Select...</option>
+            <option value="I'd Like to Donate">I'd like to donate</option>
+            <option value="Volunteer Interest">Volunteer interest</option>
+            <option value="Program Information">Program information</option>
+            <option value="Partnership">Partnership or sponsorship</option>
+            <option value="General Inquiry">General inquiry</option>
+            <option value="Other">Something else</option>
+          </select>
+        </div>
+      </label>
+      <label>Message<textarea name="message" rows="4" required placeholder="Tell us a little about it"></textarea></label>
+
+      <input type="hidden" name="_next" value="thanks.html">
+      <input type="hidden" name="_subject" value="New message from Blessed 77 website">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_honey" style="display:none">
+
+      <button class="btn btn-gold" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="brand reveal" href="index.html">
+      <img src="assets/logo.png" alt="Blessed 77 Foundation" class="footer-logo">
+      <span class="brand-text">Blessed 77</span>
+    </a>
+    <p class="footer-copy reveal r-delay-1">Transforming young lives through mentorship, education, and community.</p>
+    <p class="footer-legal reveal r-delay-2">501(c)(3) Nonprofit Organization | EIN: 42-5057221 | Founded 2026</p>
+    <p class="footer-legal reveal r-delay-3">&copy; <span id="year">2026</span> Blessed 77 Foundation. All rights reserved.</p>
+    <p class="footer-crisis reveal r-delay-4">In crisis? Call or text <strong>988</strong> (Suicide and Crisis Lifeline)</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function () {
+    links.classList.toggle('open');
+    toggle.classList.toggle('active');
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { links.classList.remove('open'); toggle.classList.remove('active'); }
+  });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduced) {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  var nav = document.querySelector('.nav');
+  var bar = document.getElementById('progress');
+  var ticking = false;
+  function onScroll() {
+    var y = window.scrollY;
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (docH > 0 ? y / docH : 0) + ')';
+    nav.classList.toggle('scrolled', y > 24);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
