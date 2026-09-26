@@ -801,6 +801,22 @@ a { color: inherit; text-decoration: none; }
 .signup-form .btn { flex-shrink: 0; }
 
 /* ---------- Crisis banner ---------- */
+.crisis-banner {
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  background: rgba(217, 180, 73, 0.08);
+}
+.crisis-banner p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.6;
+}
+.crisis-banner strong { color: var(--gold); font-weight: 700; }
+
 .crisis {
   text-align: center;
   padding: 32px 20px;
